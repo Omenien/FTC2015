@@ -28,9 +28,9 @@ int conveyorSpeed = 100;
 int intakeSpeed = 100;
 
 int boxDoorClosed = 200;
-int boxDoorOpen = 110;
-int boxArmStart = 185;
-int boxArmEnd = 30;
+int boxDoorOpen = 100;
+int boxArmStart = 220;
+int boxArmEnd = 80;
 
 void intakeAtSpeed(float speed)
 {

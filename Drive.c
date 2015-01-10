@@ -193,12 +193,12 @@ void lowerHook()
 
 void raiseHook()
 {
-	servo[Holder] = 0;
+	servo[Holder] = 60;
 }
 
 void halfHook()
 {
-	servo[Holder] = 127;
+	servo[Holder] = 200;
 }
 
 task printEncoderValues()

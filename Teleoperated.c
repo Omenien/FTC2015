@@ -41,7 +41,7 @@
 // Initialization on your robot and the variables within your program.
 void initializeRobot()
 {
-	servo[Holder] = 0;
+	servo[Holder] = 60;
 
 	servo[BoxDoor] = boxDoorClosed;
 

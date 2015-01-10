@@ -28,12 +28,13 @@ int rightEncoderValue;
 
 const int ticksPerRotation = 360;
 const float wheelCircumferenceInches = 11.8737;
+const float ticksPerInch = ticksPerRotation / wheelCircumferenceInches;
 
 const float kPDrive = 0.045;
 const int acceptableDriveError = 50;
 const int driveJoystickDeadzone = 5;
-const int maxAutonomousOutput = 70;
-const int minAutonomousOutput = 45;
+const int maxAutonomousOutput = 65;
+const int minAutonomousOutput = 40;
 
 void tankDrive(int leftSpeed, int rightSpeed)
 {
@@ -179,9 +180,43 @@ bool driveForInches(int inches, float timeout)
 {
 	zeroDriveEncoders();
 
+	int ticks = inches * ticksPerInch;
+
 	ClearTimer(T1);
 
-	return true;
+	bool atTarget = false;
+
+	while(!atTarget && time1[T1] < (timeout * 1000))
+	{
+		int encoderValue = getLeftEncoderValue();
+
+		int driveError = ticks - encoderValue;
+
+		if(ticks < 0 && encoderValue < ticks)
+		{
+			driveError = 0;
+		}
+		else if(ticks > 0 && encoderValue > ticks)
+		{
+			driveError = 0;
+		}
+
+		driveError = abs(driveError) > acceptableDriveError ? driveError : 0;
+
+		atTarget = driveError == 0;
+
+		int motorOutput = driveError * kPDrive;
+		motorOutput = motorOutput > 0 && motorOutput > maxAutonomousOutput ? maxAutonomousOutput : motorOutput;
+		motorOutput = motorOutput < 0 && motorOutput < -maxAutonomousOutput ? -maxAutonomousOutput : motorOutput;
+		motorOutput = motorOutput > 0 && motorOutput < minAutonomousOutput ? minAutonomousOutput : motorOutput;
+		motorOutput = motorOutput < 0 && motorOutput > -minAutonomousOutput ? -minAutonomousOutput : motorOutput;
+
+		tankDrive(motorOutput, -motorOutput);
+	}
+
+	tankDrive(0, 0);
+
+	return atTarget;
 }
 
 void lowerHook()
@@ -206,12 +241,12 @@ void threeFourthsHook()
 
 void lowerSecondaryHook()
 {
-	servo[SecondaryHolder] = 13243153253252t525246252854274981326rqfoihdaskvgasyoa;
+	servo[SecondaryHolder] = 188;
 }
 
 void raiseSecondaryHook()
 {
-	servo[SecondaryHolder] = 2194owefhoiaihsoissfjsoivuza;
+	servo[SecondaryHolder] = 0;
 }
 
 task printEncoderValues()

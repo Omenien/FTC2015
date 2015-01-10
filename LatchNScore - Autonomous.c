@@ -83,7 +83,37 @@ task main()
 
 	wait1Msec(2000);
 
-	turnTicks(-300, 5);
+	moveBoxArmToStart();
+
+	wait1Msec(2000);
+
+	moveBoxArmToEnd();
+
+	wait1Msec(2000);
+
+	moveBoxArmToStart();
+
+	wait1Msec(2000);
+
+	moveBoxArmToEnd();
+
+	wait1Msec(2000);
+
+	closeBoxDoor();
+
+	wait1Msec(500);
+
+	openBoxDoor();
+
+	wait1Msec(500);
+
+	moveBoxArmToStart();
+
+	wait1Msec(2000);
+
+	moveBoxArmToEnd();
+
+	wait1Msec(2000);
 
   StopAllTasks();
 }

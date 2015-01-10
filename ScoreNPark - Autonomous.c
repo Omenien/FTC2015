@@ -83,7 +83,40 @@ task main()
 
 	wait1Msec(2000);
 
-	turnTicks(-300, 5);
+	moveBoxArmToStart();
+
+	wait1Msec(2000);
+
+	moveBoxArmToEnd();
+
+	wait1Msec(2000);
+
+	closeBoxDoor();
+
+	wait1Msec(500);
+
+	openBoxDoor();
+
+	wait1Msec(500);
+
+	moveBoxArmToStart();
+
+	wait1Msec(2000);
+
+	moveBoxArmToEnd();
+
+	wait1Msec(2000);
+
+	currentLiftTarget = liftTargets[0];
+
+	while(!updateLift)
+	{
+		wait1Msec(50);
+	}
+
+	turnTicks(-400, 5);
+
+	driveUntilTicks(-9000, 10);
 
   StopAllTasks();
 }

@@ -32,9 +32,7 @@ const float ticksPerInch = ticksPerRotation / wheelCircumferenceInches;
 
 const float kPDrive = 0.045;
 const int acceptableDriveError = 50;
-const int driveJoystickDeadzone = 5;
-const int maxAutonomousOutput = 65;
-const int minAutonomousOutput = 40;
+const int driveJoystickDeadzone = 10;
 
 void tankDrive(int leftSpeed, int rightSpeed)
 {
@@ -67,7 +65,7 @@ int getRightEncoderValue()
  * Autonomously drive until a certain number of ticks
  * Returns whether or not it ran out of time
  */
-bool driveUntilTicks(int leftTicks, int rightTicks, float timeout)
+bool driveUntilTicks(int leftTicks, int rightTicks, float timeout, int minAutonomousOutput = 35, int maxAutonomousOutput = 55)
 {
 	zeroDriveEncoders();
 
@@ -94,7 +92,7 @@ bool driveUntilTicks(int leftTicks, int rightTicks, float timeout)
 	return leftAtTarget && rightAtTarget;
 }
 
-bool driveUntilTicks(int ticks, float timeout)
+bool driveUntilTicks(int ticks, float timeout, int minAutonomousOutput = 35, int maxAutonomousOutput = 55)
 {
 	zeroDriveEncoders();
 
@@ -135,7 +133,7 @@ bool driveUntilTicks(int ticks, float timeout)
 	return atTarget;
 }
 
-bool turnTicks(int ticks, float timeout)
+bool turnTicks(int ticks, float timeout, int minAutonomousOutput = 35, int maxAutonomousOutput = 55)
 {
 	zeroDriveEncoders();
 
@@ -176,7 +174,7 @@ bool turnTicks(int ticks, float timeout)
 	return atTarget;
 }
 
-bool driveForInches(int inches, float timeout)
+bool driveForInches(int inches, float timeout, int minAutonomousOutput = 35, int maxAutonomousOutput = 55)
 {
 	zeroDriveEncoders();
 

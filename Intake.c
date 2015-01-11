@@ -27,8 +27,8 @@ int intakeSpeed = 100;
 
 int boxDoorClosed = 200;
 int boxDoorOpen = 100;
-int boxArmStart = 220;
-int boxArmEnd = 80;
+int boxArmStart = 255;
+int boxArmEnd = 20;
 
 void intakeAtSpeed(float speed)
 {

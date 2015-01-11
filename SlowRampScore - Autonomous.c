@@ -54,7 +54,9 @@ task main()
 
   liftForTime(0.75, 75);
 
-  driveUntilTicks(-9600, 7.5);
+  driveUntilTicks(-4600, 7.5, 30, 40);
+
+  driveUntilTicks(-5000, 7.5);
 
   currentLiftTarget = liftTargets[4];
 
@@ -65,7 +67,7 @@ task main()
 
   liftAtSpeed(15);
 
-  lowerHook();
+  halfHook();
 
   openBoxDoor();
 

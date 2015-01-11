@@ -26,7 +26,7 @@
 int liftRightEncoder = 0;
 bool liftAtTarget = false;
 int liftJoystickDeadzone = 10;
-int liftTargets[4] = {0, 2500, 7600, 12650};
+int liftTargets[5] = {0, 2500, 7600, 12650, 9800};
 int currentLiftTarget = liftTargets[0];
 int acceptableLiftError = 25;
 

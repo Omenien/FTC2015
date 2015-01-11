@@ -109,7 +109,7 @@ task main()
 
 	currentLiftTarget = liftTargets[0];
 
-	while(!updateLift)
+	while(!updateLift())
 	{
 		wait1Msec(50);
 	}

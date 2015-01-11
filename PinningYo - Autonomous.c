@@ -52,68 +52,13 @@ task main()
 
   StartTask(printEncoderValues);
 
-  liftForTime(0.75, 75);
+  liftForTime(0.5, 75);
 
-  driveUntilTicks(-9600, 7.5);
+  driveUntilTicks(-5000, 7.5);
 
-  currentLiftTarget = liftTargets[4];
+  driveUntilTicks(20, 1);
 
-  while(!updateLift())
-  {
-  	wait1Msec(50);
-  }
-
-  liftAtSpeed(15);
-
-  lowerHook();
-
-  openBoxDoor();
-
-  wait1Msec(1000);
-
-  moveBoxArmToEnd();
-
-  wait1Msec(2000);
-
-	moveBoxArmToStart();
-
-	wait1Msec(2000);
-
-	moveBoxArmToEnd();
-
-	wait1Msec(2000);
-
-	moveBoxArmToStart();
-
-	wait1Msec(2000);
-
-	moveBoxArmToEnd();
-
-	wait1Msec(2000);
-
-	moveBoxArmToStart();
-
-	wait1Msec(2000);
-
-	moveBoxArmToEnd();
-
-	wait1Msec(2000);
-
-	closeBoxDoor();
-
-	wait1Msec(500);
-
-	openBoxDoor();
-
-	wait1Msec(500);
-
-	moveBoxArmToStart();
-
-	wait1Msec(2000);
-
-	moveBoxArmToEnd();
-
-	wait1Msec(2000);
+  turnTicks(-1200, 10);
 
   StopAllTasks();
 }
